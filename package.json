@@ -1,0 +1,25 @@
+{
+  "name": "taskflow-api",
+  "version": "1.0.0",
+  "description": "Taskflow - Görev ve Proje Yönetim Sistemi REST API'si (Node.js & Express)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node test-runner.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "rest-api",
+    "taskflow",
+    "crud",
+    "middleware"
+  ],
+  "author": "TaskFlow Developer",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "uuid": "^9.0.1"
+  }
+}

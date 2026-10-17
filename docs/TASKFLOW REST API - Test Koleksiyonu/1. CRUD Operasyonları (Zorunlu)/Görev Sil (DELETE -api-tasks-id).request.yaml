@@ -1,0 +1,5 @@
+$kind: http-request
+name: Görev Sil (DELETE /api/tasks/:id)
+url: "{{baseUrl}}/api/tasks/{{taskId}}"
+method: DELETE
+order: 5000

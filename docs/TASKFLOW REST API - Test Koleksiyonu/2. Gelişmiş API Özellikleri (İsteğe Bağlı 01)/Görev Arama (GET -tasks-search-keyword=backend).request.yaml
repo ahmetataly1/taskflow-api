@@ -1,0 +1,7 @@
+$kind: http-request
+name: Görev Arama (GET /tasks/search?keyword=backend)
+url: "{{baseUrl}}/api/tasks/search?keyword=backend"
+method: GET
+queryParams:
+  keyword: backend
+order: 3000

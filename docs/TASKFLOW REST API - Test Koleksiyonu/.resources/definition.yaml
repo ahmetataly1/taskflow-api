@@ -1,0 +1,5 @@
+$kind: collection
+description: Node.js ile Backend Programlama Bitirme Projesi - TaskFlow API Postman Koleksiyonu
+variables:
+  baseUrl: http://localhost:3000
+  taskId: task-101

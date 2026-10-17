@@ -1,0 +1,14 @@
+$kind: http-request
+name: Görev Güncelle (PUT /api/tasks/:id)
+url: "{{baseUrl}}/api/tasks/{{taskId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "status": "completed",
+      "priority": "medium"
+    }
+order: 4000

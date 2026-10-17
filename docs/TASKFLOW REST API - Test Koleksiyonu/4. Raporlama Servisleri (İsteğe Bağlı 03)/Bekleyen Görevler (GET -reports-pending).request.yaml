@@ -1,0 +1,5 @@
+$kind: http-request
+name: Bekleyen Görevler (GET /reports/pending)
+url: "{{baseUrl}}/api/reports/pending"
+method: GET
+order: 2000

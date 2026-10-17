@@ -1,0 +1,5 @@
+$kind: http-request
+name: Tüm Görevleri Listele (GET /api/tasks)
+url: "{{baseUrl}}/api/tasks"
+method: GET
+order: 1000

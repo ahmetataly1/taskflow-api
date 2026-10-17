@@ -1,0 +1,5 @@
+$kind: http-request
+name: Tekil Görev Detayı (GET /api/tasks/:id)
+url: "{{baseUrl}}/api/tasks/{{taskId}}"
+method: GET
+order: 2000

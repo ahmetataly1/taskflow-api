@@ -1,0 +1,7 @@
+$kind: http-request
+name: Önceliğe Göre Filtrele (GET /tasks?priority=high)
+url: "{{baseUrl}}/api/tasks?priority=high"
+method: GET
+queryParams:
+  priority: high
+order: 2000

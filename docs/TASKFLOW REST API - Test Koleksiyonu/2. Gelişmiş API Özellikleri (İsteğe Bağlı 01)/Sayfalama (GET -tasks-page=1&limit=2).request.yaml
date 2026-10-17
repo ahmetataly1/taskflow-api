@@ -1,0 +1,8 @@
+$kind: http-request
+name: Sayfalama (GET /tasks?page=1&limit=2)
+url: "{{baseUrl}}/api/tasks?page=1&limit=2"
+method: GET
+queryParams:
+  page: "1"
+  limit: "2"
+order: 5000

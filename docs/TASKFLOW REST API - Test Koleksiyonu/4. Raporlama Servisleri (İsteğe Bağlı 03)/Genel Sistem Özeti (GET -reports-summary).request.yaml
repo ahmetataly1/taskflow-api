@@ -1,0 +1,5 @@
+$kind: http-request
+name: Genel Sistem Özeti (GET /reports/summary)
+url: "{{baseUrl}}/api/reports/summary"
+method: GET
+order: 3000

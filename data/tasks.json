@@ -1,0 +1,62 @@
+[
+  {
+    "id": "task-102",
+    "title": "CRUD Endpointlerinin Geliştirilmesi",
+    "description": "Görev oluşturma, okuma, güncelleme ve silme API rotalarının yazılması",
+    "status": "completed",
+    "priority": "high",
+    "assignee": "musa",
+    "createdAt": "2026-10-11T10:30:00.000Z",
+    "updatedAt": "2026-10-11T16:00:00.000Z"
+  },
+  {
+    "id": "task-103",
+    "title": "Validation Middleware Entegrasyonu",
+    "description": "Gelen JSON verisinin title, description, priority ve assignee alanlarının doğrulanması",
+    "status": "in-progress",
+    "priority": "medium",
+    "assignee": "ayse",
+    "createdAt": "2026-10-12T08:15:00.000Z",
+    "updatedAt": "2026-10-12T11:45:00.000Z"
+  },
+  {
+    "id": "task-104",
+    "title": "Raporlama Servislerinin Yazılması",
+    "description": "Tamamlanan, bekleyen ve genel özet istatistiklerini hesaplayan servislerin geliştirilmesi",
+    "status": "pending",
+    "priority": "medium",
+    "assignee": "ali",
+    "createdAt": "2026-10-12T13:00:00.000Z",
+    "updatedAt": "2026-10-12T13:00:00.000Z"
+  },
+  {
+    "id": "task-105",
+    "title": "Postman Test Koleksiyonunun Hazırlanması",
+    "description": "Tüm uç noktalar için test senaryolarının ve parametrelerinin Postman üzerinde test edilmesi",
+    "status": "pending",
+    "priority": "low",
+    "assignee": "fatma",
+    "createdAt": "2026-10-13T09:00:00.000Z",
+    "updatedAt": "2026-10-13T09:00:00.000Z"
+  },
+  {
+    "id": "task-1792273408415-285",
+    "title": "Mobil Arayüz Tasarımı",
+    "description": "Figma üzerinde mobil ekran tasarımlarının tamamlanması",
+    "status": "pending",
+    "priority": "high",
+    "assignee": "ahmet",
+    "createdAt": "2026-10-17T21:43:28.415Z",
+    "updatedAt": "2026-10-17T21:43:28.415Z"
+  },
+  {
+    "id": "task-1792273746073-905",
+    "title": "Mobil Arayüz Tasarımı",
+    "description": "Figma üzerinde mobil ekran tasarımlarının tamamlanması",
+    "status": "pending",
+    "priority": "high",
+    "assignee": "ahmet",
+    "createdAt": "2026-10-17T21:49:06.073Z",
+    "updatedAt": "2026-10-17T21:49:06.073Z"
+  }
+]

@@ -1,0 +1,14 @@
+$kind: http-request
+name: Eksik/Geçersiz Veri ile Ekleme (400 Bad Request)
+url: "{{baseUrl}}/api/tasks"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "title": "A",
+      "priority": "ultra-high"
+    }
+order: 1000

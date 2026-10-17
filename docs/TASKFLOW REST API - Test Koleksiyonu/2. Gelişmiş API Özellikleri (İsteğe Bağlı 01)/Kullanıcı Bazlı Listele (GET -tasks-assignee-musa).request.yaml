@@ -1,0 +1,5 @@
+$kind: http-request
+name: Kullanıcı Bazlı Listele (GET /tasks/assignee/musa)
+url: "{{baseUrl}}/api/tasks/assignee/musa"
+method: GET
+order: 4000

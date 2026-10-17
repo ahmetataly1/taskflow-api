@@ -1,0 +1,8 @@
+$kind: http-request
+name: Sıralama (GET /tasks?sort=createdAt&order=desc)
+url: "{{baseUrl}}/api/tasks?sort=createdAt&order=desc"
+method: GET
+queryParams:
+  sort: createdAt
+  order: desc
+order: 6000

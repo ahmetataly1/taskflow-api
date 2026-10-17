@@ -1,0 +1,17 @@
+$kind: http-request
+name: Yeni Görev Ekle (POST /api/tasks)
+url: "{{baseUrl}}/api/tasks"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "title": "Postman Test Senaryoları",
+      "description": "API uç noktalarının uçtan uca testlerinin tamamlanması",
+      "priority": "high",
+      "assignee": "musa",
+      "status": "pending"
+    }
+order: 3000

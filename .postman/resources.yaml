@@ -1,0 +1,13 @@
+# Use this workspace to collaborate
+workspace:
+  id: dd9a3a3e-4b3e-4172-8a87-9e838c4eb213
+
+localResources:
+  collections:
+    - ../docs/TASKFLOW REST API - Test Koleksiyonu
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../docs/TASKFLOW REST API - Test Koleksiyonu: 9b12480a-9d6a-4d2c-8cb3-taskflow0001

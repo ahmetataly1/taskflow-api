@@ -1,0 +1,7 @@
+$kind: http-request
+name: Duruma Göre Filtrele (GET /tasks?status=completed)
+url: "{{baseUrl}}/api/tasks?status=completed"
+method: GET
+queryParams:
+  status: completed
+order: 1000
