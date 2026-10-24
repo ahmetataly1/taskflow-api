@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>TASKFLOW - Sistem ve API Tasarım Çıktısı</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 15mm 20mm 15mm;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #24292e;
+      line-height: 1.6;
+      font-size: 13px;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      border-bottom: 2px solid #0052cc;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      color: #0052cc;
+      font-size: 24px;
+      margin: 0 0 6px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .header .subtitle {
+      color: #586069;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 12px;
+      background-color: #ebf5ff;
+      color: #0052cc;
+      margin-right: 5px;
+    }
+    h2 {
+      color: #0d1117;
+      font-size: 16px;
+      border-bottom: 1px solid #e1e4e8;
+      padding-bottom: 6px;
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
+    h3 {
+      font-size: 14px;
+      color: #1f2328;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+    p, li {
+      color: #333;
+    }
+    ul {
+      margin-top: 4px;
+      margin-bottom: 8px;
+      padding-left: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      margin-bottom: 16px;
+      font-size: 12px;
+    }
+    th, td {
+      border: 1px solid #d0d7de;
+      padding: 7px 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f6f8fa;
+      font-weight: 600;
+      color: #24292e;
+    }
+    tr:nth-child(even) {
+      background-color: #fafbfc;
+    }
+    .code-box {
+      background-color: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 11px;
+      line-height: 1.45;
+      margin: 8px 0;
+      white-space: pre;
+    }
+    .method {
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      display: inline-block;
+      font-family: monospace;
+    }
+    .get { background-color: #def7ec; color: #03543f; }
+    .post { background-color: #e1effe; color: #1e429f; }
+    .put { background-color: #fef08a; color: #713f12; }
+    .delete { background-color: #fde8e8; color: #9b1c1c; }
+    .footer {
+      margin-top: 30px;
+      border-top: 1px solid #e1e4e8;
+      padding-top: 10px;
+      font-size: 11px;
+      color: #6a737d;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>TASKFLOW</h1>
+    <div class="subtitle">Görev ve Proje Yönetim Sistemi REST API — Bitirme Projesi Tasarım Çıktısı (Aşama 01)</div>
+    <div style="margin-top: 8px;">
+      <span class="badge">Node.js</span>
+      <span class="badge">Express.js</span>
+      <span class="badge">RESTful Architecture</span>
+      <span class="badge">MVC / Modüler Tasarım</span>
+    </div>
+  </div>
+
+  <h2>1. Proje Tanıtımı ve İhtiyaç Analizi</h2>
+  <p>
+    <strong>Proje Amacı:</strong> Bir yazılım şirketinde ekip içi görevlerin oluşturulması, ilgili çalışanlara atanması, öncelik sıralaması (high, medium, low) ve tamamlanma durumlarının (pending, in-progress, completed) merkezi bir RESTful API üzerinden yönetilmesini ve anlık istatistiksel raporlama sunulmasını sağlamaktır.
+  </p>
+
+  <h2>2. API Mimarisi ve Klasör Yapısı (Architecture Design)</h2>
+  <p>Proje, sorumlulukların ayrılığı prensibine uygun olarak katmanlı mimaride kurgulanmıştır:</p>
+
+  <div class="code-box">taskflow-api/
+├── data/              --> JSON veri tabanı (Kalıcı dosya depolama)
+├── docs/              --> Sistem tasarımı, test senaryoları ve Postman koleksiyonu
+├── logs/              --> İstek logları (Logger Middleware - access.log)
+├── src/
+│   ├── controllers/   --> HTTP isteklerini yöneten denetleyiciler (Task, Report)
+│   ├── middlewares/   --> Ara katmanlar (Logger, Validation, Error Handler)
+│   ├── models/        --> Veri modelleri, filtreleme ve istatistik hesaplama mantığı
+│   ├── routes/        --> API rotaları (/api/tasks, /api/reports)
+│   ├── utils/         --> Asenkron dosya okuma/yazma yardımcıları
+│   ├── app.js         --> Express uygulama yapılandırması
+│   └── server.js      --> Sunucu dinleme noktası (Port 3000)
+├── README.md          --> Kurulum ve çalıştırma kılavuzu
+└── test-runner.js     --> 16/16 Otomatik test paketi</div>
+
+  <h2>3. Veri Modeli Tasarımı (Data Model & Schema)</h2>
+  <p>Sistemde yönetilen <strong>Görev Varlığı (Task Entity)</strong> veri şeması:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Alan Adı</th>
+        <th>Veri Tipi</th>
+        <th>Zorunlu mu?</th>
+        <th>Varsayılan</th>
+        <th>Açıklama / Kısıtlar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>id</code></td>
+        <td>String</td>
+        <td>Sistem</td>
+        <td>Otomatik</td>
+        <td>Benzersiz kimlik (örn: task-1792273746073-905)</td>
+      </tr>
+      <tr>
+        <td><code>title</code></td>
+        <td>String</td>
+        <td>Evet</td>
+        <td>-</td>
+        <td>Görev başlığı (En az 3 karakter)</td>
+      </tr>
+      <tr>
+        <td><code>description</code></td>
+        <td>String</td>
+        <td>Evet</td>
+        <td>-</td>
+        <td>Görev açıklaması (En az 5 karakter)</td>
+      </tr>
+      <tr>
+        <td><code>priority</code></td>
+        <td>String</td>
+        <td>Evet</td>
+        <td>-</td>
+        <td>Öncelik düzeyi: <code>low</code>, <code>medium</code>, <code>high</code></td>
+      </tr>
+      <tr>
+        <td><code>assignee</code></td>
+        <td>String</td>
+        <td>Evet</td>
+        <td>-</td>
+        <td>Atanan çalışan kullanıcı adı (örn: ahmet, musa)</td>
+      </tr>
+      <tr>
+        <td><code>status</code></td>
+        <td>String</td>
+        <td>Hayır</td>
+        <td><code>pending</code></td>
+        <td>Durum: <code>pending</code>, <code>in-progress</code>, <code>completed</code></td>
+      </tr>
+      <tr>
+        <td><code>createdAt</code></td>
+        <td>String (ISO)</td>
+        <td>Sistem</td>
+        <td>ISO 8601</td>
+        <td>Oluşturulma zaman damgası</td>
+      </tr>
+      <tr>
+        <td><code>updatedAt</code></td>
+        <td>String (ISO)</td>
+        <td>Sistem</td>
+        <td>ISO 8601</td>
+        <td>Son güncelleme zaman damgası</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4. API Tasarım Dokümanı ve Endpoint Listesi</h2>
+
+  <h3>A. Temel CRUD Endpointleri (Zorunlu Kapsam - 100 Puan)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>İşlem</th>
+        <th>Metot & URL</th>
+        <th>Açıklama / Gövde</th>
+        <th>Durum Kodu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Görev Ekleme</td>
+        <td><span class="method post">POST</span> <code>/api/tasks</code></td>
+        <td>Yeni görev oluşturur. Body: title, description, priority, assignee</td>
+        <td>201 Created</td>
+      </tr>
+      <tr>
+        <td>Görev Listeleme</td>
+        <td><span class="method get">GET</span> <code>/api/tasks</code></td>
+        <td>Sistemdeki tüm görevleri dizi olarak döner.</td>
+        <td>200 OK</td>
+      </tr>
+      <tr>
+        <td>Görev Detayı</td>
+        <td><span class="method get">GET</span> <code>/api/tasks/:id</code></td>
+        <td>Belirtilen ID'ye sahip tekil görevi getirir.</td>
+        <td>200 OK / 404</td>
+      </tr>
+      <tr>
+        <td>Görev Güncelleme</td>
+        <td><span class="method put">PUT</span> <code>/api/tasks/:id</code></td>
+        <td>Görev bilgilerini veya durumunu günceller.</td>
+        <td>200 OK</td>
+      </tr>
+      <tr>
+        <td>Görev Silme</td>
+        <td><span class="method delete">DELETE</span> <code>/api/tasks/:id</code></td>
+        <td>Görevi sistemden kalıcı olarak kaldırır.</td>
+        <td>200 OK</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>B. İleri Seviye Filtreleme, Arama ve Sayfalama (İsteğe Bağlı 01)</h3>
+  <ul>
+    <li><strong>Duruma Göre Filtreleme:</strong> <span class="method get">GET</span> <code>/api/tasks?status=completed</code></li>
+    <li><strong>Önceliğe Göre Filtreleme:</strong> <span class="method get">GET</span> <code>/api/tasks?priority=high</code></li>
+    <li><strong>Anahtar Kelime Arama:</strong> <span class="method get">GET</span> <code>/api/tasks/search?keyword=backend</code></li>
+    <li><strong>Çalışan Bazlı Listeleme:</strong> <span class="method get">GET</span> <code>/api/tasks/assignee/musa</code></li>
+    <li><strong>Sayfalama ve Sıralama:</strong> <span class="method get">GET</span> <code>/api/tasks?page=1&limit=10&sort=createdAt&order=desc</code></li>
+  </ul>
+
+  <h3>C. İstatistik ve Raporlama Servisleri (İsteğe Bağlı 03)</h3>
+  <ul>
+    <li><strong>Tamamlanan Görev Raporu:</strong> <span class="method get">GET</span> <code>/api/reports/completed</code></li>
+    <li><strong>Bekleyen Görev Raporu:</strong> <span class="method get">GET</span> <code>/api/reports/pending</code></li>
+    <li><strong>Genel Sistem Özeti:</strong> <span class="method get">GET</span> <code>/api/reports/summary</code> (Toplam, tamamlanma yüzdesi, öncelik dağılımı)</li>
+  </ul>
+
+  <div class="footer">
+    TASKFLOW Backend API Tasarım Dokümanı · Ahmet Atalay · 2026
+  </div>
+
+</body>
+</html>
